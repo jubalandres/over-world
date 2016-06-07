@@ -37,7 +37,7 @@
         {
          "columns":7,
          "firstgid":1,
-         "image":"..\/..\/Downloads\/tileset3 (1).png",
+         "image":"tileset3 (1).png",
          "imageheight":256,
          "imagewidth":128,
          "margin":1,

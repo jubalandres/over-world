@@ -130,7 +130,7 @@ function run()
 {
 	context.fillStyle = "blue";
 	context.fillRect(0, 0, canvas.width, canvas.height);
-	var deltaTime = getDeltaTime;
+	var deltaTime = getDeltaTime();
 	context.save();
 	
 	context.scale(3,3);
