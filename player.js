@@ -14,14 +14,10 @@ var Player = function() {
 	this.sprite.buildAnimation(16, 3, 76, 88, 0.05,
 			[0,1,2,3,4,5,6,7]);
 	
-	for(var i=0; i<ANIM_MAX; i++)
-	{
-		this.sprite.setAnimationOffset(i, -25, -40);
-	}
+
 	this.position = new Vector2();
 	this.position.set( 1*TILE, 9*TILE );
 	 
-	this.direction = LEFT;
 	
 	this.width = 76;
 	this.height = 88;
@@ -55,4 +51,9 @@ Player.prototype.update = function(deltaTime)
 		this.position.x += 1;
 	}
 
+}
+
+Player.prototype.draw = function()
+{
+	this.sprite.draw(context, this.position.x, this.position.y);
 }
