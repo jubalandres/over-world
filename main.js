@@ -125,6 +125,7 @@ function drawMap()
 
 var keyboard = new Keyboard();
 var player = new Player();
+var viewoffset = new Vector2();
 
 function run()
 {
@@ -133,8 +134,15 @@ function run()
 	var deltaTime = getDeltaTime();
 	context.save();
 	
-	context.scale(3,3);
+	context.scale(2,2);
+	context.translate(-viewoffset.x, 0);
 	drawMap();
+	if(player.position.x >= viewoffset.x + canvas.width/2)
+	{
+		viewoffset.x = player.position.x - canvas.width/2;
+	
+	}
+	
 	context.restore();
 	player.update(deltaTime);
 	player.draw();

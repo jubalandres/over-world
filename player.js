@@ -1,18 +1,18 @@
 var Player = function() {
 	this.image = document.createElement("img");
-	this.sprite = new Sprite("hero1.png");
-	this.sprite.buildAnimation(16, 3, 76, 88, 0.05,
-			[41]);
-	this.sprite.buildAnimation(16, 3, 76, 88, 0.05,
-			[43]);
-	this.sprite.buildAnimation(16, 3, 76, 88, 0.05,
-			[16,17,18,19,20,21,22,23]);
-	this.sprite.buildAnimation(16, 3, 76, 88, 0.05,
-			[36]);
-	this.sprite.buildAnimation(16, 3, 76, 88, 0.05,
-			[42]);
-	this.sprite.buildAnimation(16, 3, 76, 88, 0.05,
-			[0,1,2,3,4,5,6,7]);
+	this.sprite = new Sprite("saxon_swordsman.png");
+	this.sprite.buildAnimation(5, 12, 76, 88, 0.05,
+			[5]);
+	this.sprite.buildAnimation(5, 12, 76, 88, 0.05,
+			[5]);
+	this.sprite.buildAnimation(5, 12, 76, 88, 0.05,
+			[5]);
+	this.sprite.buildAnimation(5, 12, 76, 88, 0.05,
+			[5]);
+	this.sprite.buildAnimation(5, 12, 76, 88, 0.05,
+			[5]);
+	this.sprite.buildAnimation(5, 12, 76, 88, 0.05,
+			[5]);
 	
 
 	this.position = new Vector2();
