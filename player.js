@@ -1,17 +1,17 @@
 var Player = function() {
 	this.image = document.createElement("img");
 	this.sprite = new Sprite("saxon_swordsman.png");
-	this.sprite.buildAnimation(5, 12, 76, 88, 0.05,
+	this.sprite.buildAnimation(5, 12, 68, 66, 0.05,
+			[4]);
+	this.sprite.buildAnimation(5, 12, 68, 66, 0.05,
 			[5]);
-	this.sprite.buildAnimation(5, 12, 76, 88, 0.05,
+	this.sprite.buildAnimation(5, 12, 68, 66, 0.05,
 			[5]);
-	this.sprite.buildAnimation(5, 12, 76, 88, 0.05,
+	this.sprite.buildAnimation(5, 12, 68, 66, 0.05,
 			[5]);
-	this.sprite.buildAnimation(5, 12, 76, 88, 0.05,
+	this.sprite.buildAnimation(5, 12, 68, 66, 0.05,
 			[5]);
-	this.sprite.buildAnimation(5, 12, 76, 88, 0.05,
-			[5]);
-	this.sprite.buildAnimation(5, 12, 76, 88, 0.05,
+	this.sprite.buildAnimation(5, 12, 68, 66, 0.05,
 			[5]);
 	
 
