@@ -56,9 +56,7 @@ var TILESET_COUNT_X = TileMaps["draft"].tilesets[0].columns;
 var TILESET_COUNT_Y = TileMaps["draft"].tilesets[0].tilecount
 						/ TILESET_COUNT_X;
 						
-var METER = TILE;
-var MAXDX = METER * 10;
-var MAXDY = METER * 15;
+
 
 						
 var tileset = document.createElement("img");
@@ -114,7 +112,7 @@ function drawMap()
 				{
 					var tileindex = TileMaps["draft"].layers[layeridx].data[idx] - 1;
 					var sx = TILESET_PADDING + (tileindex % TILESET_COUNT_X)*(TILESET_TILE + TILESET_SPACING);
-					var sy = TILESET_PADDING + (Math.floor(tileindex/TILESET_COUNT_Y))*(TILESET_TILE + TILESET_SPACING);
+					var sy = TILESET_PADDING + (Math.floor(tileindex/TILESET_COUNT_X))*(TILESET_TILE + TILESET_SPACING);
 					context.drawImage(tileset,sx,sy, TILESET_TILE,TILESET_TILE,x*TILE,y*TILE, TILESET_TILE +1,TILESET_TILE+1);
 				}
 				idx++;
@@ -133,19 +131,20 @@ function run()
 	context.fillRect(0, 0, canvas.width, canvas.height);
 	var deltaTime = getDeltaTime();
 	context.save();
-	
+	viewoffset.x = player.position.x - canvas.width/4;
+	viewoffset.y = player.position.y - canvas.height/4;
 	context.scale(2,2);
-	context.translate(-viewoffset.x, 0);
+	context.translate(-viewoffset.x, -viewoffset.y);
 	drawMap();
-	if(player.position.x >= viewoffset.x + canvas.width/2)
-	{
-		viewoffset.x = player.position.x - canvas.width/2;
 	
-	}
 	
-	context.restore();
+	
 	player.update(deltaTime);
 	player.draw();
+	
+	
+	context.restore();
+	
 	
 }
 
