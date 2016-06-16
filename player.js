@@ -104,7 +104,7 @@ var Player = function() {
 	this.sprite.buildAnimation(5, 24, 73, 73, 0.05,
 			[9, 9, 14, 14, 19, 19, 24,24]); this.sprite.setAnimationOffset(0,-52,-33);
 	this.sprite.buildAnimation(5, 24, 73, 73, 0.05,
-			[29, 34, 39, 44]); this.sprite.setAnimationOffset(0,-52,-33);
+			[29, 29 , 34, 34, 39, 39, 44, 44]); this.sprite.setAnimationOffset(0,-52,-33);
 	this.sprite.buildAnimation(5, 24, 73, 73, 0.05,
 			[49, 54, 59]); this.sprite.setAnimationOffset(0,-52,-33);
 //DOWN LEFT
@@ -161,28 +161,44 @@ Player.prototype.update = function(deltaTime)
 	if(keyboard.isKeyDown(keyboard.KEY_UP) == true)
 	{
 		up = true;
-		this.direction = LEFT;
+		this.direction = UP = true;
 		this.position.y -= 2;
 		if(this.sprite.currentAnimation != ANIM_WALK_UP)
 			this.sprite.setAnimation(ANIM_WALK_UP);
 	}
 	if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true)
 	{
+		down = true;
+		this.direction = DOWN = true;
 		this.position.y += 2;
 			if(this.sprite.currentAnimation != ANIM_WALK_DOWN)
 			this.sprite.setAnimation(ANIM_WALK_DOWN);
 	}
 	if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true)
 	{
+		left = true;
+		this.direction = LEFT;
 		this.position.x -= 2;
 			if(this.sprite.currentAnimation != ANIM_WALK_LEFT)
 			this.sprite.setAnimation(ANIM_WALK_LEFT);
 	}
 	if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)
 	{
+		right = true;
+		this.direction = RIGHT;
 		this.position.x += 2;
 			if(this.sprite.currentAnimation != ANIM_WALK_RIGHT)
 			this.sprite.setAnimation(ANIM_WALK_RIGHT);
+	}
+	if(this.direction = UP = true && keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
+	{
+		if(this.sprite.currentAnimation != ANIM_ATTACK_UP)
+			this.sprite.setAnimation(ANIM_ATTACK_UP);
+	}
+	if(this.direction = DOWN = true && keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
+	{
+		if(this.sprite.currentAnimation != ANIM_ATTACK_DOWN)
+			this.sprite.setAnimation(ANIM_ATTACK_DOWN);
 	}
 }
 

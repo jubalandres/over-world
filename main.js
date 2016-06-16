@@ -8,6 +8,11 @@ var METER = TILE;
 var MAXDX = METER * 10;
 var MAXDY = METER * 15;
 
+var STATE_SPLASH = 0;
+var STATE_GAME = 1;
+var STATE_GAMEOVER = 2;
+var gameState = STATE_SPLASH
+
 function getDeltaTime()
 {
 	endFrameMillis = startFrameMillis;
@@ -124,12 +129,22 @@ function drawMap()
 var keyboard = new Keyboard();
 var player = new Player();
 var viewoffset = new Vector2();
+var background = document.createElement("img");
+background.src = "background.png";
 
-function run()
+function runSplash(deltaTime)
 {
-	context.fillStyle = "blue";
-	context.fillRect(0, 0, canvas.width, canvas.height);
-	var deltaTime = getDeltaTime();
+	if(keyboard.isKeyDown(keyboard.KEY_SPACE))
+	{
+		gameState = STATE_GAME;
+		return;
+	}
+		context.drawImage(background,0,0 );
+}
+
+function runGame(deltaTime)
+{
+	context.drawImage(background,0,0 );
 	context.save();
 	viewoffset.x = player.position.x - canvas.width/4;
 	viewoffset.y = player.position.y - canvas.height/4;
@@ -144,7 +159,32 @@ function run()
 	
 	
 	context.restore();
+}
+
+function runGameOver(deltaTime)
+{
+
+}
+
+function run()
+{
+	context.fillStyle = "blue";
+	context.fillRect(0, 0, canvas.width, canvas.height);
 	
+	var deltaTime = getDeltaTime();
+
+		switch(gameState)
+	{
+		case STATE_SPLASH:
+			runSplash(deltaTime);
+			break;
+		case STATE_GAME:
+			runGame(deltaTime);
+			break;
+		case STATE_GAMEOVER:
+			runGameOver(deltaTime);
+			break;
+	}
 	
 }
 
