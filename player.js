@@ -195,7 +195,7 @@ Player.prototype.update = function(deltaTime)
 		if(this.sprite.currentAnimation != ANIM_ATTACK_UP)
 			this.sprite.setAnimation(ANIM_ATTACK_UP);
 	}
-	if(this.direction = DOWN = true && keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
+	else(this.direction = DOWN = true && keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
 	{
 		if(this.sprite.currentAnimation != ANIM_ATTACK_DOWN)
 			this.sprite.setAnimation(ANIM_ATTACK_DOWN);
