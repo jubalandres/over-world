@@ -52,7 +52,7 @@ var ANIM_DIE_DOWN_RIGHT = 31;
 
 var Player = function() {
 	this.image = document.createElement("img");
-	this.sprite = new Sprite("saxon_swordsman.png");
+	this.sprite = new Sprite("enemy.png");
 //UP
 	this.sprite.buildAnimation(5, 24, 73, 73, 0.05,
 			[0]); this.sprite.setAnimationOffset(0,-52,-33);
@@ -172,6 +172,14 @@ Player.prototype.update = function(deltaTime)
 		this.position.y -= 2;
 		if(this.sprite.currentAnimation != ANIM_WALK_UP)
 			this.sprite.setAnimation(ANIM_WALK_UP);
+		
+		var tx = pixelToTile(this.position.x + this.offset.x);
+		var ty = pixelToTile(this.position.y + this.offset.y);
+		
+		if(cellAtTileCoord(water, tx, ty) == true)
+		{
+			this.position.x = tx * TILE + TILE - this.offset.y;
+		}
 	}
 	else if(keyboard.isKeyDown(keyboard.KEY_UP ) == true && keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)
 	{
@@ -188,6 +196,13 @@ Player.prototype.update = function(deltaTime)
 		this.position.y += 2;
 			if(this.sprite.currentAnimation != ANIM_WALK_DOWN)
 			this.sprite.setAnimation(ANIM_WALK_DOWN);
+		var tx = pixelToTile(this.position.x + this.offset.x);
+		var ty = pixelToTile(this.position.y + this.offset.y);
+		
+		if(cellAtTileCoord(water, tx, ty) == true)
+		{
+			this.position.x = tx * TILE - 1 - this.offset.y;
+		}
 	}
 	else if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true)
 	{
@@ -196,6 +211,14 @@ Player.prototype.update = function(deltaTime)
 		this.position.x -= 2;
 			if(this.sprite.currentAnimation != ANIM_WALK_LEFT)
 			this.sprite.setAnimation(ANIM_WALK_LEFT);
+		
+		var tx = pixelToTile(this.position.x + this.offset.x);
+		var ty = pixelToTile(this.position.y + this.offset.y);
+		
+		if(cellAtTileCoord(water, tx, ty) == true)
+		{
+			this.position.x = tx * TILE + TILE - this.offset.x;
+		}
 	}
 	else if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)
 	{
@@ -204,6 +227,14 @@ Player.prototype.update = function(deltaTime)
 		this.position.x += 2;
 			if(this.sprite.currentAnimation != ANIM_WALK_RIGHT)
 			this.sprite.setAnimation(ANIM_WALK_RIGHT);
+		
+		var tx = pixelToTile(this.position.x + this.offset.x);
+		var ty = pixelToTile(this.position.y + this.offset.y);
+		
+		if(cellAtTileCoord(water, tx, ty) == true)
+		{
+			this.position.x = tx * TILE - 1 - this.offset.x;
+		}
 	}
 	else if(this.attacking == false) {
 		if(this.direction == LEFT)

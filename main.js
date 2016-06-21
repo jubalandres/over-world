@@ -9,9 +9,13 @@ var MAXDX = METER * 10;
 var MAXDY = METER * 15;
 
 var STATE_SPLASH = 0;
-var STATE_GAME = 1;
-var STATE_GAMEOVER = 2;
+var STATE_CONTROLS = 1;
+var STATE_GAME = 2;
+var STATE_GAMEOVER = 3;
 var gameState = STATE_SPLASH
+
+var floor = 1;
+var water = 0;
 
 function getDeltaTime()
 {
@@ -131,16 +135,31 @@ var player = new Player();
 var viewoffset = new Vector2();
 var background = document.createElement("img");
 background.src = "background.png";
+var screen1 = document.createElement("img");
+screen1.src = "screen1.png";
+var screen2 = document.createElement("img");
+screen2.src = "screen2.png";
 
 function runSplash(deltaTime)
+{
+	if(keyboard.isKeyDown(keyboard.KEY_ENTER))
+	{
+		gameState = STATE_CONTROLS;
+		return;
+	}
+		context.drawImage(screen1,0,0 );
+}
+
+function runControls(deltaTime)
 {
 	if(keyboard.isKeyDown(keyboard.KEY_SPACE))
 	{
 		gameState = STATE_GAME;
 		return;
 	}
-		context.drawImage(background,0,0 );
+		context.drawImage(screen2,0,0 );
 }
+
 
 function runGame(deltaTime)
 {
@@ -178,6 +197,9 @@ function run()
 		case STATE_SPLASH:
 			runSplash(deltaTime);
 			break;
+		case STATE_CONTROLS:
+			runControls(deltaTime);
+			break;
 		case STATE_GAME:
 			runGame(deltaTime);
 			break;
@@ -187,6 +209,8 @@ function run()
 	}
 	
 }
+
+initialize();
 
 (function() {
   var onEachFrame;
