@@ -130,6 +130,7 @@ function drawMap()
 	}
 }
 
+var enemy = new Enemy();
 var keyboard = new Keyboard();
 var player = new Player();
 var viewoffset = new Vector2();
@@ -171,7 +172,8 @@ function runGame(deltaTime)
 	context.translate(-viewoffset.x, -viewoffset.y);
 	drawMap();
 	
-	
+	enemy.update(deltaTime);
+	enemy.draw();
 	
 	player.update(deltaTime);
 	player.draw();
