@@ -139,6 +139,8 @@ function runSplash(deltaTime)
 		gameState = STATE_GAME;
 		return;
 	}
+	context.font = "30px Minion Pro Italic";
+	context.fillText "socer"
 		context.drawImage(background,0,0 );
 }
 
